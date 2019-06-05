@@ -7,11 +7,24 @@ function UniTextField (props) {
 	
 		var 	classes 	= useStyles ();
 		
-		let		{ placeholder,
-				  id } 		= props;
+		let	  { placeholder,
+				id } 		= props;
+				  
+		let   [ value, setValue ]             		= useState ('');
+		let   [ error, setError ]             		= useState (false);
+				  
+		function onChangeVal (event) {
+				setValue (event.target.value);
+				// console.log (`value ${JSON.stringify (event.target.value)}`);
+		}
+		
+		function onBlurAndValidate () {
+				// setError (true);
+		}
+		
 	
 		return (
-				<TextField error={false} id={id} placeholder={placeholder} className={classes.textField} margin="normal" variant="filled" helperText="Some important text"/>
+				<TextField error={error} id={id} placeholder={placeholder} onBlur={onBlurAndValidate} onChange={onChangeVal} className={classes.textField} margin="normal" variant="filled" helperText="Some important text"/>
 		);
 }
 
