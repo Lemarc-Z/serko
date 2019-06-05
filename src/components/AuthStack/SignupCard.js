@@ -20,7 +20,10 @@ function SignupCard () {
 	
 		return (
 				<Card className={classes.card}>
-						<img src={serkoLogo} alt='could not find the logo' className={classes.logo} />
+						<div className={classes.logoView}>
+								<img src={serkoLogo} alt='could not find the logo' className={classes.logo} />
+								<p style={{color: 'grey'}}>Sign up with Serko</p>
+						</div>
 						{fillingConten.map ((item, index) => {
 								return (<UniTextField placeholder={item.placeholder} id={item.id}/>);
 						})}
@@ -40,8 +43,11 @@ var useStyles = makeStyles ({
 		logo: {
 				maxWidth: 		'60px',
 				maxHeight: 		'60px', 
-				margin: 		'60px 60px',
+				
 		},
+		logoView: {
+				margin: 		'60px 60px',
+		}
 });
 
 export default SignupCard;

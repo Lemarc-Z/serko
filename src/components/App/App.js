@@ -6,7 +6,7 @@ import SignupCard 		from '../AuthStack/SignupCard';
 
 function App () {
 		return (
-				<div>
+				<div className="App">
 						<SignupCard />
 				</div>
 		);
