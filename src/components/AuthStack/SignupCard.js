@@ -5,6 +5,7 @@ import { makeStyles } 	from '@material-ui/core/styles';
 // import CardContent 		from '@material-ui/core/CardContent';
 
 import UniTextField 		from '../Universal/UniTextField';
+import UniSelect 			from '../Universal/UniSelect';
 
 var 	serkoLogo      	= require ('../../Images/SerkoLogo.svg');  
 
@@ -25,8 +26,9 @@ function SignupCard () {
 								<p style={{color: 'grey'}}>Sign up with Serko</p>
 						</div>
 						{fillingConten.map ((item, index) => {
-								return (<UniTextField placeholder={item.placeholder} id={item.id}/>);
+								return (<UniTextField placeholder={item.placeholder} id={item.id} key={index}/>);
 						})}
+						<UniSelect id='lingo' placeholder='Preferred Language *'/>
 				</Card>
 		);
 }

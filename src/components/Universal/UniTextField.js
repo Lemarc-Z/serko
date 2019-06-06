@@ -8,7 +8,8 @@ function UniTextField (props) {
 		var 	classes 	= useStyles ();
 		
 		let	  { placeholder,
-				id } 		= props;
+				id,
+			 	...rest } 		= props;
 				  
 		let   [ value, setValue ]             		= useState ('');
 		let   [ error, setError ]             		= useState (false);
@@ -26,7 +27,7 @@ function UniTextField (props) {
 		
 	
 		return (
-				<TextField error={error} id={id} placeholder={placeholder} onBlur={onBlurAndValidate} onChange={onChangeVal} className={classes.textField} margin="normal" variant="standard" helperText={helperText} InputProps={{className: classes.input}}/>
+				<TextField error={error} id={id} placeholder={placeholder} onBlur={onBlurAndValidate} onChange={onChangeVal} className={classes.textField} margin="normal" variant="standard" helperText={helperText} InputProps={{className: classes.input}} {...rest}/>
 		);
 }
 
