@@ -7,10 +7,10 @@ import SignupCard 			from '../AuthStack/SignupCard';
 
 
 const theme 	= createMuiTheme ({
-		palette: {
-				primary: {
-						main: '#006ba9'
-				}
+				palette: {
+						primary: {
+								main: '#006ba9'
+						}
 				}
 		},
 )
@@ -21,6 +21,7 @@ function App () {
 						<div className="App">
 								<SignupCard />
 						</div>
+						<p style={{textAlign: 'center', margin: '10px auto'}}>Powered By Serko</p>
 				</MuiThemeProvider>
 		);
 }

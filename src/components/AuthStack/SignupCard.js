@@ -39,12 +39,14 @@ function SignupCard () {
 
 var useStyles = makeStyles ({
 		card: {
+				padding: 		'35px 0',
 				maxWidth: 		375,
                 marginLeft:     'auto',
                 marginRight:    'auto',
 				textAlign: 		'center',
                 alignItems:     'center',
                 justifyContent: 'center',
+				margin: 		'30px 0',
 		},
 		logo: {
 				maxWidth: 		'60px',
@@ -52,10 +54,10 @@ var useStyles = makeStyles ({
 				
 		},
 		logoView: {
-				margin: 		'60px 60px',
+				marginBottom: 	'60px',
 		},
 	    button: {
-				margin: 		'20px 0px',
+				marginTop: 		'20px',
 				width:  		'80%',	
 	    },
 });
