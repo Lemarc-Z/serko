@@ -37,7 +37,7 @@ function UniTextField (props) {
 		
 	
 		return (
-				<TextField error={error} id={id} placeholder={placeholder} onBlur={onBlurAndValidate} onChange={onChangeVal} className={classes.textField} margin="normal" variant="standard" helperText={helperText} InputProps={{className: classes.input}} {...rest}/>
+				<TextField type={type} error={error} id={id} placeholder={placeholder} onBlur={onBlurAndValidate} onChange={onChangeVal} className={classes.textField} margin="normal" variant="standard" helperText={helperText} InputProps={{className: classes.input}} {...rest}/>
 		);
 }
 

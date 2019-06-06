@@ -37,11 +37,11 @@ var checkTypeAndValidate 	= function (type, val)
 	    switch (type) {
 	            case 'password': {
 					    userArgs     = [
-					            {val: val, errmsg: '手机号不能为空', chktype: 'required'},
-								{val: val, errmsg: '手机号必须为数字', chktype: 'regex', regex: /[0-9]/},
-								{val: val, errmsg: 'Lowercase', chktype: 'regex', regex: /[a-z]/},
-								{val: val, errmsg: 'Uppercase', chktype: 'regex', regex: /[A-Z]/},
-					            {val: val, errmsg: '手机号长度错误', chktype: 'length', func: len => len > 5},
+					            {val: val, errmsg: `${type} is required`, chktype: 'required'},
+								{val: val, errmsg: `${type} must contain number`, chktype: 'regex', regex: /[0-9]/},
+								{val: val, errmsg: `${type} must contain lowercase`, chktype: 'regex', regex: /[a-z]/},
+								{val: val, errmsg: `${type} must contain uppercase`, chktype: 'regex', regex: /[A-Z]/},
+					            {val: val, errmsg: `${type} length less than 5`, chktype: 'length', func: len => len > 5},
 					    ];
 						return validateUserArgs (userArgs);
 	            }

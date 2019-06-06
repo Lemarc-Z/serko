@@ -15,9 +15,9 @@ function SignupCard () {
 		var 	classes 	= useStyles ();
 		
 		let 	fillingConten 	= [
-				{placeholder: 'Email *', id: 'email', required: true, type: 'email'},
-				{placeholder: 'Password *', id: 'pwd', required: true, type: 'password'},
-				{placeholder: 'Confirm Password *', id: 'cfmPwd', required: true, type: 'password0'},
+				{placeholder: 'Email *', id: 'email', required: true, type: 'Email'},
+				{placeholder: 'Password *', id: 'pwd', required: true, type: 'Password'},
+				{placeholder: 'Confirm Password *', id: 'cfmPwd', required: true, type: 'Password'},
 		]
 	
 		return (
