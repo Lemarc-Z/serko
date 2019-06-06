@@ -33,7 +33,7 @@ function UniSelect (props) {
 		return (
 				<FormControl className={classes.textField}>
 						<InputLabel>{placeholder}</InputLabel>
-						<Select error={error} id={id} value={value} onChange={onChangeVal} onBlur={onBlurAndValidate} variant="standard" MenuProps={{getContentAnchorEl: null, anchorOrigin: { vertical: "bottom", horizontal: "left"}}}>
+						<Select className={classes.select} error={error} id={id} value={value} onChange={onChangeVal} onBlur={onBlurAndValidate} variant="standard" MenuProps={{getContentAnchorEl: null, anchorOrigin: { vertical: "bottom", horizontal: "left"}}}>
 								<MenuItem value="olivier">Olivier</MenuItem>
 								<MenuItem value="kevin">Kevin</MenuItem>
 						</Select>
@@ -47,6 +47,9 @@ var useStyles = makeStyles (theme =>({
 				marginLeft: 		theme.spacing (1),
 				marginRight: 		theme.spacing (1),
 				width:  			'80%',	
+	    },
+	    select: {
+				textAlign: 			'left',
 	    },
 }));
 
