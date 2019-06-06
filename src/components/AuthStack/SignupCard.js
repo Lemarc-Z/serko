@@ -15,9 +15,9 @@ function SignupCard () {
 		var 	classes 	= useStyles ();
 		
 		let 	fillingConten 	= [
-				{placeholder: 'Email *', id: 'email'},
-				{placeholder: 'Password *', id: 'pwd'},
-				{placeholder: 'Confirm Password *', id: 'cfmPwd'},
+				{placeholder: 'Email *', id: 'email', required: true, type: 'email'},
+				{placeholder: 'Password *', id: 'pwd', required: true, type: 'password'},
+				{placeholder: 'Confirm Password *', id: 'cfmPwd', required: true, type: 'password0'},
 		]
 	
 		return (
@@ -27,7 +27,7 @@ function SignupCard () {
 								<p style={{color: 'grey'}}>Sign up with Serko</p>
 						</div>
 						{fillingConten.map ((item, index) => {
-								return (<UniTextField placeholder={item.placeholder} id={item.id} key={index}/>);
+								return (<UniTextField placeholder={item.placeholder} id={item.id} required={item.required} key={index} type={item.type}/>);
 						})}
 						<UniSelect id='lingo' placeholder='Preferred Language *'/>						
 						<Button variant="contained" color="primary" className={classes.button}>

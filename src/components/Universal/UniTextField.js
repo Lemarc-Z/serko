@@ -1,6 +1,8 @@
 import React, { useState } 		from 'react';
 import TextField 				from '@material-ui/core/TextField';
 import { makeStyles } 			from '@material-ui/core/styles';
+// helpers
+import ValidateHelper      		from '../Helpers/ValidateHelper';
 
 
 function UniTextField (props) {
@@ -9,6 +11,7 @@ function UniTextField (props) {
 		
 		let	  { placeholder,
 				id,
+				type,
 			 	...rest } 		= props;
 				  
 		let   [ value, setValue ]             		= useState ('');
@@ -21,8 +24,15 @@ function UniTextField (props) {
 		}
 		
 		function onBlurAndValidate () {
-				// setError (true);
-				// setHelperText ('hello world');
+	            let 	retErrMsg 		= ValidateHelper.checkTypeAndValidate (type, value);	
+				if (retErrMsg) {
+						setError (true);
+						setHelperText (retErrMsg);
+				}
+				else {
+						setError (false);
+						setHelperText ('');
+				}
 		}
 		
 	
