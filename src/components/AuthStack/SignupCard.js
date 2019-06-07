@@ -29,7 +29,7 @@ function SignupCard () {
 						{fillingConten.map ((item, index) => {
 								return (<UniTextField placeholder={item.placeholder} id={item.id} required={item.required} key={index} type={item.type}/>);
 						})}
-						<UniSelect id='lingo' placeholder='Preferred Language *'/>						
+						<UniSelect id='lingo' placeholder='Preferred Language *' type='Language'/>						
 						<Button variant="contained" color="primary" className={classes.button}>
 								<b>SIGN UP</b>
 						</Button>

@@ -25,6 +25,10 @@ var validateUserArgs      = function (args)
                                 if (!regex.test (val))                              return errmsg;
                                 break;
                         }
+                        case 'value': {
+                                if (!func (val))                                    return errmsg;
+                                break;
+                        }
                         default:
                                 return errmsg;
                 }
@@ -50,6 +54,13 @@ var checkTypeAndValidate 	= function (type, val)
 					            {val: val, errmsg: `${type} is required`, chktype: 'required'},
 								// https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
 								{val: val, errmsg: `Invalid ${type}`, chktype: 'regex', regex: /\S+@\S+\.\S+/},
+					    ];
+						return validateUserArgs (userArgs);
+	            }
+	            case 'Language': {
+					    userArgs     = [
+					            {val: val, errmsg: `${type} is required`, chktype: 'required'},
+								{val: val, errmsg: `Invalid ${type}`, chktype: 'value', func: val => val === 'en-AU' || val === 'en-NZ' || val === 'en-UK' || val === 'en-US'},
 					    ];
 						return validateUserArgs (userArgs);
 	            }

@@ -21,6 +21,7 @@ class HttpHelper {
 
         }
 
+
         static async postP (api, data) {
                 data    = data || {};
                 console.log (`- post to ${api}: ${JSON.stringify (data)}`);
@@ -52,11 +53,13 @@ class HttpHelper {
 						response	= await this.postP (api, data);
 				} 
 
+
                 let     response_json   = await response.json ();
                 let     resobj;
 
                 resobj      = response_json;
                 // console.log (`- resobj: ${JSON.stringify (resobj)}`);
+				
                 return resobj;
         }
 

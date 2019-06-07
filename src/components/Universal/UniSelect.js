@@ -7,12 +7,14 @@ import FormHelperText 					from '@material-ui/core/FormHelperText';
 import { makeStyles } 					from '@material-ui/core/styles';
 // helpers
 import HttpHelper      					from '../Helpers/HttpHelper';
+import ValidateHelper      				from '../Helpers/ValidateHelper';
 
 function UniSelect (props) {
 	
 		var 	classes 	= useStyles ();
 		
 		let	  { placeholder,
+				type,
 				id } 		= props;
 				  
 		let   [ value, setValue ]             		= useState ('');
@@ -30,11 +32,18 @@ function UniSelect (props) {
 		}
 		
 		function onBlurAndValidate () {
-				// setError (true);
-				// setHelperText ('hello world');
+	            let 	retErrMsg 		= ValidateHelper.checkTypeAndValidate (type, value);	
+				if (retErrMsg) {
+						setError (true);
+						setHelperText (retErrMsg);
+				}
+				else {
+						setError (false);
+						setHelperText ('');
+				}
 		}
 		
-        async function onGetLanguages (cardNo) {
+        async function onGetLanguages () {
                 try {
 
                         let     getUrl      = 'https://serko-engineering-exercises.azurewebsites.net/api/Languages';
