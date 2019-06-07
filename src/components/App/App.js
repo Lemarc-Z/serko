@@ -8,6 +8,7 @@ import SnackbarContent 		from '@material-ui/core/SnackbarContent';
 import ErrorIcon 			from '@material-ui/icons/Error';
 // AuthStack
 import SignupCard 			from '../AuthStack/SignupCard';
+import WelcomeCard 			from '../AuthStack/WelcomeCard';
 
 
 const 	theme 	= createMuiTheme ({
