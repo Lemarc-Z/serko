@@ -1,0 +1,73 @@
+// import    { useContext }                from 'react';
+// import      queryString                 from 'query-string';
+
+class HttpHelper {
+
+        static async getP (api, data) {
+                data    = data || {};
+				console.log (`- get to ${api}: ${JSON.stringify (data)}`);
+
+                let     contentType     = 'application/json';
+                // let     params          = queryString.stringify (data);
+				let     url             = `${api}`;
+                
+                return await fetch (url, {
+                        method:         'GET',
+                        headers: {
+                                'Accept':           'application/json',
+                                'Content-Type':     contentType
+                        },
+                });
+
+        }
+
+        static async postP (api, data) {
+                data    = data || {};
+                console.log (`- post to ${api}: ${JSON.stringify (data)}`);
+				
+                let     contentType     = 'application/json';
+
+                let 	body    		= JSON.stringify (data);
+                let     url             = `${api}`;
+
+                return await fetch (url, {
+                        method:         'POST',
+                        headers: {
+                                'Accept':           'application/json',
+                                'Content-Type':     contentType
+                        },
+                        credentials:    'include',
+                        body,
+                });
+        }
+
+        static async httpRequestA (api, data, method, erm) {
+                console.log (`httpRequestA (${api}, ${JSON.stringify (data)})`);
+
+                let     response;
+				if (method === 0) {
+						response	= await this.getP (api, data);
+				} 
+				if (method === 1) {
+						response	= await this.postP (api, data);
+				} 
+
+                let     response_json   = await response.json ();
+                let     resobj;
+
+                resobj      = response_json;
+                // console.log (`- resobj: ${JSON.stringify (resobj)}`);
+                return resobj;
+        }
+
+
+
+        static handleGenericErr (err, props) {
+                console.log (`[${err.status}] ${err.message}: ${err.stack}`);
+        }
+
+}
+
+export default HttpHelper;
+
+

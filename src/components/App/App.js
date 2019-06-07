@@ -10,7 +10,7 @@ import ErrorIcon 			from '@material-ui/icons/Error';
 import SignupCard 			from '../AuthStack/SignupCard';
 
 
-const theme 	= createMuiTheme ({
+const 	theme 	= createMuiTheme ({
 				palette: {
 						primary: {
 								main: '#006ba9'
@@ -24,7 +24,7 @@ const theme 	= createMuiTheme ({
 
 function App () {
 	
-		let   [ open, setOpen ]             	= useState (true);
+		let   [ open, setOpen ]             	= useState (false);
 		let   [ message, setMessage ]           = useState ('');
 		
 		var 	classes 	= useStyles ();
@@ -34,8 +34,9 @@ function App () {
 				setOpen (false);
 		}
 	
-	    function onToast () {
-				setOpen (true);
+	    function onToast (text) {
+				setMessage (text);
+				setOpen (true);		
 	    }
 	
 	    let     passprops       = {
