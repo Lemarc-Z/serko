@@ -35,13 +35,21 @@ var checkTypeAndValidate 	= function (type, val)
 {
 		let 	userArgs;
 	    switch (type) {
-	            case 'password': {
+	            case 'Password': {
 					    userArgs     = [
 					            {val: val, errmsg: `${type} is required`, chktype: 'required'},
 								{val: val, errmsg: `${type} must contain number`, chktype: 'regex', regex: /[0-9]/},
 								{val: val, errmsg: `${type} must contain lowercase`, chktype: 'regex', regex: /[a-z]/},
 								{val: val, errmsg: `${type} must contain uppercase`, chktype: 'regex', regex: /[A-Z]/},
 					            {val: val, errmsg: `${type} length less than 5`, chktype: 'length', func: len => len > 5},
+					    ];
+						return validateUserArgs (userArgs);
+	            }
+	            case 'Email': {
+					    userArgs     = [
+					            {val: val, errmsg: `${type} is required`, chktype: 'required'},
+								// https://stackoverflow.com/questions/46155/how-to-validate-an-email-address-in-javascript
+								{val: val, errmsg: `Invalid ${type}`, chktype: 'regex', regex: /\S+@\S+\.\S+/},
 					    ];
 						return validateUserArgs (userArgs);
 	            }
