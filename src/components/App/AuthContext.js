@@ -1,8 +1,9 @@
 import React, { useState } 		from 'react';
+import withRouter               from 'react-router-dom/withRouter';
 
 var     AuthContext     = React.createContext ();
 
-function AuthProvider (props) {
+function AuthProvider0 (props) {
 
 		let   [ isLoggedIn, setLoggedIn ]       = useState (false);
 
@@ -37,6 +38,7 @@ function AuthProvider (props) {
 }
 
 var AuthConsumer    = AuthContext.Consumer;
+var AuthProvider    = withRouter (AuthProvider0);
 
 export {
 		AuthProvider,

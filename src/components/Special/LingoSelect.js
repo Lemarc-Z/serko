@@ -59,8 +59,6 @@ function LingoSelect (props) {
                         HttpHelper.handleGenericErr (err, props);
                 }
         }
-		
-		console.log (`- value :${value}`);
 
 		return (
 				<FormControl className={classes.textField}>

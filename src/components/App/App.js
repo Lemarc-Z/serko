@@ -31,7 +31,7 @@ const theme = createMuiTheme ({
 
 function PassRoute (props) {
         let   { component: Component,
-                ...rest }               = this.props;
+                ...rest }               = props;
 
         return (
                 <Route {...rest} render={props => <Component {...props} {...rest} />} />
@@ -99,10 +99,10 @@ function App () {
 		return (
                 <MuiThemeProvider theme={theme}>
                         <AuthProvider className="App">			
-                        <Switch>
-                                <AuthRoute path="/signup" component={SignupCard} {...passprops} exact />
-                                <AuthRoute component={PostSignup} />
-                        </Switch>
+                                <Switch>
+                                        <AuthRoute path="/signup" component={SignupCard} {...passprops} exact />
+                                        <AuthRoute component={PostSignup} />
+                                </Switch>
                         </AuthProvider>
                         <Snackbar open={open} autoHideDuration={5000} onClose={handleClose} >
                                 <SnackbarContent className={classes.error}

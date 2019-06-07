@@ -27,6 +27,10 @@ var validateUserArgs      = function (args)
                                 if (!func (val))                                    return errmsg;
                                 break;
                         }
+                        case 'diff': {
+                                if (val[0] !== val[1])                              return errmsg;
+                                break;
+                        }
                         default:
                                 return errmsg;
                 }
@@ -69,4 +73,5 @@ var checkTypeAndValidate 	= function (type, val)
 
 export default {
 		checkTypeAndValidate,
+		validateUserArgs,
 };

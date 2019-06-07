@@ -37,7 +37,7 @@ class HttpHelper {
                                 'Accept':           'application/json',
                                 'Content-Type':     contentType
                         },
-                        credentials:    'include',
+                        // credentials:    'include',
                         body,
                 });
         }
@@ -52,13 +52,17 @@ class HttpHelper {
 				if (method === 1) {
 						response	= await this.postP (api, data);
 				} 
+				
+                if (response.status === 400) {
+                        throw 'Already Registerd';
+                }
 
 
                 let     response_json   = await response.json ();
                 let     resobj;
 
                 resobj      = response_json;
-                // console.log (`- resobj: ${JSON.stringify (resobj)}`);
+                console.log (`- resobj: ${JSON.stringify (resobj)}`);
 				
                 return resobj;
         }
@@ -66,7 +70,8 @@ class HttpHelper {
 
 
         static handleGenericErr (err, props) {
-                console.log (`[${err.status}] ${err.message}: ${err.stack}`);
+                // console.log (`[${err.status}] ${err.message}: ${err.stack}`);
+				props.onToast (`${err || 'Unknown Error'}`);
         }
 
 }
