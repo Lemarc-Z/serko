@@ -92,7 +92,7 @@ function App () {
 	    }
 		
         let     passprops       = {
-                authctx,
+                // authctx,   // duplicated 
                 onToast,
         };
 	

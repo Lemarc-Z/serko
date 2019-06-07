@@ -9,12 +9,13 @@ import { makeStyles } 					from '@material-ui/core/styles';
 import HttpHelper      					from '../Helpers/HttpHelper';
 import ValidateHelper      				from '../Helpers/ValidateHelper';
 
-function UniSelect (props) {
+function LingoSelect (props) {
 	
 		var 	classes 	= useStyles ();
 		
 		let	  { placeholder,
 				type,
+				onChangeTxt,
 				id } 		= props;
 				  
 		let   [ value, setValue ]             		= useState ('');
@@ -22,13 +23,13 @@ function UniSelect (props) {
 		let   [ helperText, setHelperText ] 		= useState ('');
 		let   [ languages, setLanguages ] 			= useState ('');
 		
-        useEffect (() => {
-                onGetLanguages ();
-        }, []);
-				  
+		useEffect (() => {
+				onGetLanguages ();
+		}, []);
+			  
 		function onChangeVal (event) {
 				setValue (event.target.value);
-				// console.log (`value ${JSON.stringify (event.target.value)}`);
+				onChangeTxt (event.target.value);
 		}
 		
 		function onBlurAndValidate () {
@@ -85,4 +86,4 @@ var useStyles = makeStyles (theme =>({
 	    },
 }));
 
-export default UniSelect;
+export default LingoSelect;

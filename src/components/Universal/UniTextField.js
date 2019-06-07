@@ -12,6 +12,7 @@ function UniTextField (props) {
 		let	  { placeholder,
 				id,
 				type,
+				onChangeTxt,
 			 	...rest } 		= props;
 				  
 		let   [ value, setValue ]             		= useState ('');
@@ -20,6 +21,7 @@ function UniTextField (props) {
 				  
 		function onChangeVal (event) {
 				setValue (event.target.value);
+				onChangeTxt (event.target.value);
 				// console.log (`value ${JSON.stringify (event.target.value)}`);
 		}
 		
