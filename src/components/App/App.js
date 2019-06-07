@@ -1,4 +1,7 @@
-import React, { useState }	from 'react';
+import React, { useState, useContext }	from 'react';
+import { Route,
+         Switch,
+         Redirect }         from 'react-router-dom';
 import 						'./App.css';
 import { MuiThemeProvider, 
 		 createMuiTheme } 	from '@material-ui/core/styles';
@@ -10,23 +13,71 @@ import ErrorIcon 			from '@material-ui/icons/Error';
 import SignupCard 			from '../AuthStack/SignupCard';
 import WelcomeCard 			from '../AuthStack/WelcomeCard';
 
+import { AuthProvider,
+         AuthConsumer,
+         AuthContext }     	from '../App/AuthContext';
 
-const 	theme 	= createMuiTheme ({
-				palette: {
-						primary: {
-								main: '#006ba9'
-						},
-						error: {
-								main: '#d03134'
-						}
-				}
-		},
-)
+
+const theme = createMuiTheme ({
+        palette: {
+                primary: {
+                        main: '#006ba9'
+                },
+                error: {
+                        main: '#d03134'
+                }
+        }
+});
+
+function PassRoute (props) {
+        let   { component: Component,
+                ...rest }               = this.props;
+
+        return (
+                <Route {...rest} render={props => <Component {...props} {...rest} />} />
+        );
+}
+
+
+function AuthRoute (props) {
+	    let   { component: Component,
+	            ...rest }               = props;
+
+
+        return (
+                <AuthConsumer>
+                        {authctx => {
+                                return <Route {...rest} render={props => <Component {...props} authctx={authctx} {...rest} />} />;
+                        }}
+                </AuthConsumer>
+        );
+}
+
+function PostSignup (props) {
+	
+	    let   { authctx,
+	            location }      = props;
+				
+	    let     passprops       = {
+				authctx,
+				location,
+	    };
+		
+		return (
+				authctx.checkLoggedInA ? 
+                        <Switch key={location.key}>
+                                <PassRoute path="/welcome" exact {...passprops} component={WelcomeCard} />
+                        </Switch>
+						: <Redirect to={{pathname: '/signup', state: {from: location}}} />
+				)
+}
 
 function App () {
 	
 		let   [ open, setOpen ]             	= useState (false);
 		let   [ message, setMessage ]           = useState ('');
+		
+        let     authctx                         = useContext (AuthContext);
 		
 		var 	classes 	= useStyles ();
 		
@@ -39,27 +90,31 @@ function App () {
 				setMessage (text);
 				setOpen (true);		
 	    }
-	
-	    let     passprops       = {
-	            onToast,
-	    };
+		
+        let     passprops       = {
+                authctx,
+                onToast,
+        };
 	
 		return (
-				<MuiThemeProvider theme={theme}>
-						<div className="App">
-								<SignupCard {...passprops}/>
-						</div>
-						<Snackbar open={open} autoHideDuration={5000} onClose={handleClose} >
-								<SnackbarContent className={classes.error}
-										message={<span id="client-snackbar" className={classes.message}>
-												<ErrorIcon className={classes.icon} />
-												{message}
-												</span>
-												}
-								/>
-						</Snackbar>
-						<p className={classes.sig}>Powered By Serko</p>
-				</MuiThemeProvider>
+                <MuiThemeProvider theme={theme}>
+                        <AuthProvider className="App">			
+                        <Switch>
+                                <AuthRoute path="/signup" component={SignupCard} {...passprops} exact />
+                                <AuthRoute component={PostSignup} />
+                        </Switch>
+                        </AuthProvider>
+                        <Snackbar open={open} autoHideDuration={5000} onClose={handleClose} >
+                                <SnackbarContent className={classes.error}
+                                        message={<span id="client-snackbar" className={classes.message}>
+                                        <ErrorIcon className={classes.icon} />
+                                        {message}
+                                        </span>
+                                        }
+                                />
+                        </Snackbar>
+                        <p className={classes.sig}>Powered By Serko</p>
+                </MuiThemeProvider>
 		);
 }
 

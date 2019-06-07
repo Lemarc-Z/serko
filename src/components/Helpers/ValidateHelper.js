@@ -1,5 +1,3 @@
-'use strict';
-
 var validateUserArgs      = function (args)
 {	
         for (let obj of args) {
