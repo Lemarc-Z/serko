@@ -73,6 +73,13 @@ function PostSignup (props) {
 }
 
 function App () {
+    
+        // https://stackoverflow.com/questions/1043339/javascript-for-detecting-browser-language-preference
+        
+        // To do multi-lingo / test success
+        // let     lang = (navigator.languages && navigator.languages[0]) || // Chrome / Firefox
+        //                     navigator.language ||   // All browsers
+        //                     navigator.userLanguage || navigator.systemLanguage || navigator.browserLanguage; // IE <= 10
 	
 		let   [ open, setOpen ]             	= useState (false);
 		let   [ message, setMessage ]           = useState ('');
