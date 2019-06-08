@@ -89,28 +89,28 @@ function SignupCard (props) {
 }
 
 var useStyles = makeStyles ({
-		card: {
-				padding: 		'35px 0',
-				maxWidth: 		375,
+        card: {
+                padding: 		'35px 0',
+                minWidth: 		375,
+                width:          '50%',
                 marginLeft:     'auto',
                 marginRight:    'auto',
-				textAlign: 		'center',
+                textAlign: 		'center',
                 alignItems:     'center',
                 justifyContent: 'center',
-				margin: 		'30px 0',
-		},
-		logo: {
-				maxWidth: 		'60px',
-				maxHeight: 		'60px', 
-				
-		},
-		logoView: {
-				marginBottom: 	'60px',
-		},
-	    button: {
-				marginTop: 		'20px',
-				width:  		'80%',	
-	    },
+                margin: 		'30px 0',
+        },
+        logo: {
+                maxWidth: 		'60px',
+                maxHeight: 		'60px', 
+        },
+        logoView: {
+                marginBottom: 	'60px',
+        },
+        button: {
+                marginTop: 		'20px',
+                width:  		'80%',	
+        },
 });
 
 export default SignupCard;

@@ -1,5 +1,5 @@
-import React, { useState } 		from 'react';
-import withRouter               from 'react-router-dom/withRouter';
+import React, { useState } 		    from 'react';
+import { withRouter }               from 'react-router-dom';
 
 var     AuthContext     = React.createContext ();
 
@@ -42,7 +42,7 @@ var AuthConsumer    = AuthContext.Consumer;
 var AuthProvider    = withRouter (AuthProvider0);
 
 export {
-AuthProvider,
-AuthContext,
-AuthConsumer,
+        AuthProvider,
+        AuthContext,
+        AuthConsumer,
 };
