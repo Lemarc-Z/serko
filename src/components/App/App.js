@@ -1,4 +1,4 @@
-import React, { useState, useContext }	from 'react';
+import React, { useState }	from 'react';
 import { Route,
          Switch,
          Redirect }         from 'react-router-dom';
@@ -14,8 +14,8 @@ import SignupCard 			from '../AuthStack/SignupCard';
 import WelcomeCard 			from '../AuthStack/WelcomeCard';
 
 import { AuthProvider,
-         AuthConsumer,
-         AuthContext }     	from '../App/AuthContext';
+         // AuthContext
+         AuthConsumer }     	from '../App/AuthContext';
 
 
 const theme = createMuiTheme ({
@@ -64,7 +64,7 @@ function PostSignup (props) {
 	    };
 		
 		return (
-				authctx.checkLoggedInA ? 
+				authctx.isLoggedIn ? 
                         <Switch key={location.key}>
                                 <PassRoute path="/welcome" exact {...passprops} component={WelcomeCard} />
                         </Switch>
@@ -73,18 +73,11 @@ function PostSignup (props) {
 }
 
 function App () {
-    
-        // https://stackoverflow.com/questions/1043339/javascript-for-detecting-browser-language-preference
-        
-        // To do multi-lingo / test success
-        // let     lang = (navigator.languages && navigator.languages[0]) || // Chrome / Firefox
-        //                     navigator.language ||   // All browsers
-        //                     navigator.userLanguage || navigator.systemLanguage || navigator.browserLanguage; // IE <= 10
 	
 		let   [ open, setOpen ]             	= useState (false);
 		let   [ message, setMessage ]           = useState ('');
 		
-        let     authctx                         = useContext (AuthContext);
+        // let     authctx                         = useContext (AuthContext);
 		
 		var 	classes 	= useStyles ();
 		

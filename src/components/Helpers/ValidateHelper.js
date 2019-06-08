@@ -3,7 +3,7 @@ var validateUserArgs      = function (args)
         for (let obj of args) {
                 let   { val,
                         errmsg,
-                        type,
+                        // type,
                         chktype,
                         func,
 						regex }             = obj;

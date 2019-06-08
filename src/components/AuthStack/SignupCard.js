@@ -9,6 +9,7 @@ import LingoSelect 			from '../Special/LingoSelect';
 // helpers
 import HttpHelper      		from '../Helpers/HttpHelper';
 import ValidateHelper       from '../Helpers/ValidateHelper';
+import LingoContentHelper   from '../Helpers/LingoContentHelper';
 
 var 	serkoLogo      	= require ('../../Images/SerkoLogo.svg');  
 
@@ -23,7 +24,9 @@ function SignupCard (props) {
         
         let   { authctx }       = props;
         
+        let     content         = LingoContentHelper.contentByLang ();
         
+        // console.log (`- content: ${JSON.stringify (content)}`);
         
         async function onSignUp () {
                 // console.log (`onSignUp`);
@@ -74,10 +77,10 @@ function SignupCard (props) {
                                 <img src={serkoLogo} alt='could not find the logo' className={classes.logo} />
                                 <p style={{color: 'grey'}}>Sign up with Serko</p>
                         </div>
-                        <UniTextField placeholder='Email *' id='email' required={true} type='Email' onChangeTxt={setEmail} />
-                        <UniTextField placeholder='Password *' id='pwd' required={true} type='Password' onChangeTxt={setPassword} />
-                        <UniTextField placeholder='Confirm Password *' id='cfmPwd' required={true} type='Password' onChangeTxt={setPassword0} />
-                        <LingoSelect id='lingo' placeholder='Preferred Language *' type='Language' onChangeTxt={setLanguage} />						
+                        <UniTextField placeholder={content.signup.email} id='email' required={true} type='Email' onChangeTxt={setEmail} />
+                        <UniTextField placeholder={content.signup.password} id='pwd' required={true} type='Password' onChangeTxt={setPassword} />
+                        <UniTextField placeholder={content.signup.password0} id='cfmPwd' required={true} type='Password' onChangeTxt={setPassword0} />
+                        <LingoSelect id='lingo' placeholder={content.signup.preferredlang} type='Language' onChangeTxt={setLanguage} />						
                         <Button variant="contained" color="primary" className={classes.button} onClick={onSignUp}>
                                 <b>SIGN UP</b>
                         </Button>

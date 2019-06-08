@@ -62,7 +62,7 @@ class HttpHelper {
                 let     resobj;
 
                 resobj      = response_json;
-                console.log (`- resobj: ${JSON.stringify (resobj)}`);
+                // console.log (`- resobj: ${JSON.stringify (resobj)}`);
 				
                 return resobj;
         }
