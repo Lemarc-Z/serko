@@ -15,7 +15,7 @@ import WelcomeCard 			from '../AuthStack/WelcomeCard';
 
 import { AuthProvider,
          // AuthContext,
-         AuthConsumer }     	from '../App/AuthContext';
+         AuthConsumer }     from '../App/AuthContext';
 
 
 const theme = createMuiTheme ({
