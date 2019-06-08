@@ -14,7 +14,7 @@ import SignupCard 			from '../AuthStack/SignupCard';
 import WelcomeCard 			from '../AuthStack/WelcomeCard';
 
 import { AuthProvider,
-         // AuthContext
+         // AuthContext,
          AuthConsumer }     	from '../App/AuthContext';
 
 
@@ -62,6 +62,9 @@ function PostSignup (props) {
 				authctx,
 				location,
 	    };
+        
+        console.log (`- authctx: ${JSON.stringify (authctx)}`);
+        authctx.checkLoggedInA ();
 		
 		return (
 				authctx.isLoggedIn ? 
@@ -78,7 +81,7 @@ function App () {
 		let   [ message, setMessage ]           = useState ('');
 		
         // let     authctx                         = useContext (AuthContext);
-		
+
 		var 	classes 	= useStyles ();
 		
 		function handleClose (event, reason) {
