@@ -1,48 +1,47 @@
-import React, { useState } 		    from 'react';
-import { withRouter }               from 'react-router-dom';
+import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
 
-var     AuthContext     = React.createContext ();
+const AuthContext = React.createContext();
 
-function AuthProvider0 (props) {
+function AuthProvider0(props) {
+  // flag
+  const [isLoggedIn, setLoggedIn] = useState(false);
 
-        // flag
-        let   [ isLoggedIn, setLoggedIn ]       = useState (false);
+  function checkLoggedInA() {
+    console.log('- checkLoggedInA');
+    let loggedIn = window.localStorage.getItem('isLoggedIn');
+    loggedIn = loggedIn === '1';
 
-        function checkLoggedInA () {
-                console.log (`- checkLoggedInA`)
-                let     loggedIn          = window.localStorage.getItem ('isLoggedIn');
-                loggedIn               	  = loggedIn === '1' ? true : false;
+    console.log(`- AuthContext isLoggedIn: ${isLoggedIn}`);
+    setLoggedIn(loggedIn);
 
-                console.log (`- AuthContext isLoggedIn: ${isLoggedIn}`);
-                setLoggedIn (loggedIn);
+    return loggedIn;
+  }
 
-                return loggedIn;
-        }
-
-        function onSignup () {					
-                window.localStorage.setItem ('isLoggedIn', 1);
-                setLoggedIn (true);
-        }
+  function onSignup() {
+    window.localStorage.setItem('isLoggedIn', 1);
+    setLoggedIn(true);
+  }
 
 
-        let     authctx     = {
-                isLoggedIn,
-                checkLoggedInA,
-                onSignup,
-        };
+  const authctx = {
+    isLoggedIn,
+    checkLoggedInA,
+    onSignup,
+  };
 
-        return (
-                <AuthContext.Provider value={authctx}>
-                        {props.children}
-                </AuthContext.Provider>
-        );
+  return (
+    <AuthContext.Provider value={authctx}>
+      {props.children}
+    </AuthContext.Provider>
+  );
 }
 
-var AuthConsumer    = AuthContext.Consumer;
-var AuthProvider    = withRouter (AuthProvider0);
+const AuthConsumer = AuthContext.Consumer;
+const AuthProvider = withRouter(AuthProvider0);
 
 export {
-        AuthProvider,
-        AuthContext,
-        AuthConsumer,
+  AuthProvider,
+  AuthContext,
+  AuthConsumer,
 };
